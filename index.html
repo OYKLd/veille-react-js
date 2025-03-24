@@ -3,135 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React JS - Guide Complet</title>
+    <title>React JS - Guide Technique Complet</title>
     <style>
-        * {
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.7;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        body {
-            background-color: #f4f4f4;
-            line-height: 1.6;
+            background-color: #f0f2f5;
+            color: #333;
         }
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
         }
         header {
-            background-color: #61DAFB;
-            color: #282C34;
+            background-color: #61dafb;
+            color: #282c34;
             text-align: center;
             padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .navigation {
-            display: flex;
-            justify-content: center;
-            background-color: #282C34;
-            padding: 1rem;
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
         }
-        .nav-btn {
-            background-color: transparent;
+        h1, h2, h3 {
+            color: #282c34;
+        }
+        .key-concept {
+            background-color: #f4f4f4;
+            border-left: 4px solid #61dafb;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .table-concepts {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table-concepts th, .table-concepts td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .table-concepts th {
+            background-color: #61dafb;
             color: white;
-            border: none;
-            margin: 0 10px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-        .nav-btn:hover {
-            color: #61DAFB;
-        }
-        .nav-btn.active {
-            color: #61DAFB;
-            font-weight: bold;
-        }
-        .content {
-            padding: 2rem;
-        }
-        .content h2 {
-            color: #282C34;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #61DAFB;
-            padding-bottom: 10px;
-        }
-        footer {
-            background-color: #282C34;
-            color: white;
-            text-align: center;
-            padding: 1rem;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>React JS : Guide Technique Approfondi</h1>
+        <p>Exploration complète des concepts, architectures et bonnes pratiques</p>
+    </header>
+
     <div class="container">
-        <header>
-            <h1>React JS</h1>
-            <p>Bibliothèque JavaScript pour des interfaces utilisateur dynamiques</p>
-        </header>
+        <section class="section">
+            <h2>1. Fondamentaux de React</h2>
+            <div class="key-concept">
+                <h3>Concept Clé : Composant</h3>
+                <p>Un composant React est une unité réutilisable d'interface utilisateur qui peut contenir sa propre logique et son rendu.</p>
+            </div>
 
-        <div class="navigation">
-            <button class="nav-btn active" data-section="introduction">Introduction</button>
-            <button class="nav-btn" data-section="caracteristiques">Caractéristiques</button>
-            <button class="nav-btn" data-section="ecosysteme">Écosystème</button>
-            <button class="nav-btn" data-section="tendances">Tendances</button>
-        </div>
+            <div class="code-block">
+                {/* Exemple de composant fonctionnel */}
+                function UserProfile({ name, age }) {
+                    return (
+                        &lt;div&gt;
+                            &lt;h2&gt;{name}&lt;/h2&gt;
+                            &lt;p&gt;Âge : {age} ans&lt;/p&gt;
+                        &lt;/div&gt;
+                    );
+                }
+            </div>
+        </section>
 
-        <div class="content" id="content">
-            <h2>Introduction à React JS</h2>
-            <p>React JS est une bibliothèque JavaScript open-source développée par Meta (ex-Facebook) en 2013. Conçue pour construire des interfaces utilisateur interactives et réactives, React révolutionne le développement web moderne.</p>
-        </div>
+        <section class="section">
+            <h2>2. Types de Composants</h2>
+            <table class="table-concepts">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Caractéristiques</th>
+                        <th>Utilisation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Composant Fonctionnel</td>
+                        <td>Fonction JavaScript pure</td>
+                        <td>Recommandé depuis React 16.8</td>
+                    </tr>
+                    <tr>
+                        <td>Composant de Classe</td>
+                        <td>Hérite de React.Component</td>
+                        <td>Gestion d'état complexe avant Hooks</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-        <footer>
-            © 2024 Guide React JS - Tous droits réservés
-        </footer>
+        <section class="section">
+            <h2>3. Les Hooks Principaux</h2>
+            <div class="key-concept">
+                <h3>useState : Gestion d'État</h3>
+                <div class="code-block">
+                    {/* Exemple de useState */}
+                    function Counter() {
+                        const [count, setCount] = useState(0);
+                        return (
+                            &lt;div&gt;
+                                &lt;p&gt;Compteur : {count}&lt;/p&gt;
+                                &lt;button onClick={() => setCount(count + 1)}&gt;
+                                    Incrémenter
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                        );
+                    }
+                </div>
+            </div>
+
+            <div class="key-concept">
+                <h3>useEffect : Effets de Bord</h3>
+                <div class="code-block">
+                    {/* Exemple de useEffect */}
+                    function DataFetcher() {
+                        const [data, setData] = useState(null);
+                        
+                        useEffect(() => {
+                            fetch('https://api.exemple.com/data')
+                                .then(response => response.json())
+                                .then(data => setData(data));
+                        }, []); // Tableau de dépendances vide
+
+                        return &lt;div&gt;{/* Rendu des données */}&lt;/div&gt;;
+                    }
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>4. Gestion des États Complexes</h2>
+            <div class="key-concept">
+                <h3>Hooks Personnalisés</h3>
+                <div class="code-block">
+                    {/* Hook personnalisé */}
+                    function useLocalStorage(key, initialValue) {
+                        const [storedValue, setStoredValue] = useState(() => {
+                            try {
+                                const item = window.localStorage.getItem(key);
+                                return item ? JSON.parse(item) : initialValue;
+                            } catch (error) {
+                                return initialValue;
+                            }
+                        });
+
+                        const setValue = value => {
+                            setStoredValue(value);
+                            window.localStorage.setItem(key, JSON.stringify(value));
+                        };
+
+                        return [storedValue, setValue];
+                    }
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>5. Rendu Conditionnel & Listes</h2>
+            <div class="code-block">
+                {/* Rendu conditionnel et mapping */}
+                function UserList({ users, showDetails }) {
+                    return (
+                        &lt;div&gt;
+                            {users.map(user => (
+                                &lt;div key={user.id}&gt;
+                                    {user.name}
+                                    {showDetails && &lt;p&gt;{user.email}&lt;/p&gt;}
+                                &lt;/div&gt;
+                            ))}
+                        &lt;/div&gt;
+                    );
+                }
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>6. Performance & Optimisation</h2>
+            <ul>
+                <li>Utiliser React.memo pour les composants</li>
+                <li>useMemo et useCallback pour optimiser les calculs</li>
+                <li>Code splitting avec React.lazy</li>
+                <li>Éviter les re-rendus inutiles</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>7. Écosystème et Outils</h2>
+            <ul>
+                <li>Create React App</li>
+                <li>Next.js</li>
+                <li>Redux / Context API</li>
+                <li>React Router</li>
+                <li>TypeScript</li>
+                <li>Testing Libraries (Jest, React Testing Library)</li>
+            </ul>
+        </section>
     </div>
 
     <script>
-        // Gestion de la navigation
-        const navButtons = document.querySelectorAll('.nav-btn');
-        const contentSection = document.getElementById('content');
-
-        const sections = {
-            introduction: {
-                title: 'Introduction à React JS',
-                content: 'React JS est une bibliothèque JavaScript open-source développée par Meta (ex-Facebook) en 2013. Conçue pour construire des interfaces utilisateur interactives et réactives, React révolutionne le développement web moderne.'
-            },
-            caracteristiques: {
-                title: 'Caractéristiques Clés de React',
-                content: 'React se distingue par son système de composants réutilisables, son Virtual DOM pour des rendus optimisés, et sa simplicité. Il permet de créer des interfaces complexes avec un code modulaire et maintenable.'
-            },
-            ecosysteme: {
-                title: 'Écosystème React',
-                content: 'L\'écosystème React comprend des technologies essentielles comme Next.js pour le server-side rendering, React Native pour le développement mobile, Redux pour la gestion d\'état, et une communauté mondiale de développeurs.'
-            },
-            tendances: {
-                title: 'Tendances Futures de React',
-                content: 'Les dernières versions de React se concentrent sur les server components, le streaming SSR, et des techniques de rendering plus performantes. L\'objectif est de créer des applications web toujours plus rapides et réactives.'
-            }
-        };
-
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Réinitialiser l'état des boutons
-                navButtons.forEach(btn => btn.classList.remove('active'));
+        // Animation légère des sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
                 
-                // Activer le bouton cliqué
-                button.classList.add('active');
-
-                // Mettre à jour le contenu
-                const sectionKey = button.getAttribute('data-section');
-                contentSection.innerHTML = `
-                    <h2>${sections[sectionKey].title}</h2>
-                    <p>${sections[sectionKey].content}</p>
-                `;
+                setTimeout(() => {
+                    section.style.transition = 'all 0.5s ease-out';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 200 * (index + 1));
             });
         });
     </script>

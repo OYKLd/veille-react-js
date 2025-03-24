@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React JS - Guide Complet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        header {
+            background-color: #61DAFB;
+            color: #282C34;
+            text-align: center;
+            padding: 2rem;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            background-color: #282C34;
+            padding: 1rem;
+        }
+        .nav-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-btn:hover {
+            color: #61DAFB;
+        }
+        .nav-btn.active {
+            color: #61DAFB;
+            font-weight: bold;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .content h2 {
+            color: #282C34;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #61DAFB;
+            padding-bottom: 10px;
+        }
+        footer {
+            background-color: #282C34;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>React JS</h1>
+            <p>Bibliothèque JavaScript pour des interfaces utilisateur dynamiques</p>
+        </header>
+
+        <div class="navigation">
+            <button class="nav-btn active" data-section="introduction">Introduction</button>
+            <button class="nav-btn" data-section="caracteristiques">Caractéristiques</button>
+            <button class="nav-btn" data-section="ecosysteme">Écosystème</button>
+            <button class="nav-btn" data-section="tendances">Tendances</button>
+        </div>
+
+        <div class="content" id="content">
+            <h2>Introduction à React JS</h2>
+            <p>React JS est une bibliothèque JavaScript open-source développée par Meta (ex-Facebook) en 2013. Conçue pour construire des interfaces utilisateur interactives et réactives, React révolutionne le développement web moderne.</p>
+        </div>
+
+        <footer>
+            © 2024 Guide React JS - Tous droits réservés
+        </footer>
+    </div>
+
+    <script>
+        // Gestion de la navigation
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const contentSection = document.getElementById('content');
+
+        const sections = {
+            introduction: {
+                title: 'Introduction à React JS',
+                content: 'React JS est une bibliothèque JavaScript open-source développée par Meta (ex-Facebook) en 2013. Conçue pour construire des interfaces utilisateur interactives et réactives, React révolutionne le développement web moderne.'
+            },
+            caracteristiques: {
+                title: 'Caractéristiques Clés de React',
+                content: 'React se distingue par son système de composants réutilisables, son Virtual DOM pour des rendus optimisés, et sa simplicité. Il permet de créer des interfaces complexes avec un code modulaire et maintenable.'
+            },
+            ecosysteme: {
+                title: 'Écosystème React',
+                content: 'L\'écosystème React comprend des technologies essentielles comme Next.js pour le server-side rendering, React Native pour le développement mobile, Redux pour la gestion d\'état, et une communauté mondiale de développeurs.'
+            },
+            tendances: {
+                title: 'Tendances Futures de React',
+                content: 'Les dernières versions de React se concentrent sur les server components, le streaming SSR, et des techniques de rendering plus performantes. L\'objectif est de créer des applications web toujours plus rapides et réactives.'
+            }
+        };
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Réinitialiser l'état des boutons
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Activer le bouton cliqué
+                button.classList.add('active');
+
+                // Mettre à jour le contenu
+                const sectionKey = button.getAttribute('data-section');
+                contentSection.innerHTML = `
+                    <h2>${sections[sectionKey].title}</h2>
+                    <p>${sections[sectionKey].content}</p>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
